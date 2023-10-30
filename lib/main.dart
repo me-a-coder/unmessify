@@ -483,52 +483,77 @@ class _OptionScreenDState extends State<OptionScreenD> {
       appBar: AppBar(
         title: const Text('Options for Block D'),
       ),
-      body: Container(
-        color: Colors.yellow,
+      body: SizedBox(
+        width: double.infinity, // Set width to match the screen width
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              DropdownButton<String>(
-                value: selectedMess,
-                items: messNames.map((mess) {
-                  return DropdownMenuItem<String>(
-                    value: mess,
-                    child: Text(mess),
-                  );
-                }).toList(),
-                onChanged: (String? value) {
-                  setState(() {
-                    selectedMess = value;
-                  });
-                },
-                hint: const Text('Select Mess Name'),
+          child: Card(
+            elevation: 5,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            color: Colors.yellow,
+            child: Container(
+              width: 250,
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Card(
+                    elevation: 5,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    color: Colors.white,
+                    child: SizedBox(
+                      width: 250,
+                      child: Column(
+                        children: [
+                          DropdownButton<String>(
+                            value: selectedMess,
+                            items: messNames.map((mess) {
+                              return DropdownMenuItem<String>(
+                                value: mess,
+                                child: Text(mess),
+                              );
+                            }).toList(),
+                            onChanged: (String? value) {
+                              setState(() {
+                                selectedMess = value;
+                              });
+                            },
+                            hint: const Text('Select Mess Name'),
+                          ),
+                          const SizedBox(height: 1),
+                          DropdownButton<String>(
+                            value: selectedMessType,
+                            items: messTypes.map((type) {
+                              return DropdownMenuItem<String>(
+                                value: type,
+                                child: Text(type),
+                              );
+                            }).toList(),
+                            onChanged: (String? value) {
+                              setState(() {
+                                selectedMessType = value;
+                              });
+                            },
+                            hint: const Text('Select Mess Type'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      print('Selected Mess: $selectedMess');
+                      print('Selected Mess Type: $selectedMessType');
+                    },
+                    child: const Text('Submit'),
+                  ),
+                ],
               ),
-              const SizedBox(height: 20),
-              DropdownButton<String>(
-                value: selectedMessType,
-                items: messTypes.map((type) {
-                  return DropdownMenuItem<String>(
-                    value: type,
-                    child: Text(type),
-                  );
-                }).toList(),
-                onChanged: (String? value) {
-                  setState(() {
-                    selectedMessType = value;
-                  });
-                },
-                hint: const Text('Select Mess Type'),
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  print('Selected Mess Name: $selectedMess');
-                  print('Selected Mess Type: $selectedMessType');
-                },
-                child: const Text('Submit'),
-              ),
-            ],
+            ),
           ),
         ),
       ),
