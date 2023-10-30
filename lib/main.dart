@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(LoginApp());
+  runApp(const LoginApp());
 }
 
 class LoginApp extends StatelessWidget {
+  const LoginApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Login'),
+          title: const Text('Login'),
         ),
         body: Center(
           child: Container(
             color: Colors.yellow,
-            child: LoginForm(),
+            child: const LoginForm(),
           ),
         ),
       ),
@@ -24,6 +26,8 @@ class LoginApp extends StatelessWidget {
 }
 
 class LoginForm extends StatefulWidget {
+  const LoginForm({super.key});
+
   @override
   _LoginFormState createState() => _LoginFormState();
 }
@@ -47,19 +51,19 @@ class _LoginFormState extends State<LoginForm> {
             height: 150,
             fit: BoxFit.fill,
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Card(
             elevation: 5,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0),
             ),
             child: Container(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               width: 250,
               child: Column(
                 children: <Widget>[
                   TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Name',
                     ),
                     validator: (value) {
@@ -72,7 +76,7 @@ class _LoginFormState extends State<LoginForm> {
                       name = value;
                     },
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   DropdownButtonFormField<String>(
                     value: block,
                     items:
@@ -88,9 +92,9 @@ class _LoginFormState extends State<LoginForm> {
                       });
                     },
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Email',
                     ),
                     validator: (value) {
@@ -109,7 +113,7 @@ class _LoginFormState extends State<LoginForm> {
               ),
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           InkWell(
             onTap: () {
               if (_formKey.currentState!.validate()) {
@@ -117,22 +121,22 @@ class _LoginFormState extends State<LoginForm> {
                 if (block == 'A') {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => OptionScreenA()),
+                    MaterialPageRoute(builder: (context) => const OptionScreenA()),
                   );
                 } else if (block == 'B') {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => OptionScreenB()),
+                    MaterialPageRoute(builder: (context) => const OptionScreenB()),
                   );
                 } else if (block == 'C') {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => OptionScreenC()),
+                    MaterialPageRoute(builder: (context) => const OptionScreenC()),
                   );
                 } else if (block == 'D') {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => OptionScreenD()),
+                    MaterialPageRoute(builder: (context) => const OptionScreenD()),
                   );
                 }
               }
@@ -143,8 +147,8 @@ class _LoginFormState extends State<LoginForm> {
                 borderRadius: BorderRadius.circular(30.0),
                 color: Colors.blue,
               ),
-              padding: EdgeInsets.symmetric(vertical: 12),
-              child: Center(
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              child: const Center(
                 child: Text(
                   'Login',
                   style: TextStyle(
@@ -162,6 +166,8 @@ class _LoginFormState extends State<LoginForm> {
 }
 
 class OptionScreenA extends StatefulWidget {
+  const OptionScreenA({super.key});
+
   @override
   _OptionScreenAState createState() => _OptionScreenAState();
 }
@@ -177,9 +183,9 @@ class _OptionScreenAState extends State<OptionScreenA> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Options for Block A'),
+        title: const Text('Options for Block A'),
       ),
-      body: Container(
+      body: SizedBox(
         width: double.infinity, // Set width to match the screen width
         child: Center(
           child: Card(
@@ -190,7 +196,7 @@ class _OptionScreenAState extends State<OptionScreenA> {
             color: Colors.yellow,
             child: Container(
               width: 250,
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -200,7 +206,7 @@ class _OptionScreenAState extends State<OptionScreenA> {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     color: Colors.white,
-                    child: Container(
+                    child: SizedBox(
                       width: 250,
                       child: Column(
                         children: [
@@ -217,9 +223,9 @@ class _OptionScreenAState extends State<OptionScreenA> {
                                 selectedMess = value;
                               });
                             },
-                            hint: Text('Select Mess Name'),
+                            hint: const Text('Select Mess Name'),
                           ),
-                          SizedBox(height: 1),
+                          const SizedBox(height: 1),
                           DropdownButton<String>(
                             value: selectedMessType,
                             items: messTypes.map((type) {
@@ -233,19 +239,19 @@ class _OptionScreenAState extends State<OptionScreenA> {
                                 selectedMessType = value;
                               });
                             },
-                            hint: Text('Select Mess Type'),
+                            hint: const Text('Select Mess Type'),
                           ),
                         ],
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   ElevatedButton(
                     onPressed: () {
                       print('Selected Mess: $selectedMess');
                       print('Selected Mess Type: $selectedMessType');
                     },
-                    child: Text('Submit'),
+                    child: const Text('Submit'),
                   ),
                 ],
               ),
@@ -258,6 +264,8 @@ class _OptionScreenAState extends State<OptionScreenA> {
 }
 
 class OptionScreenB extends StatefulWidget {
+  const OptionScreenB({super.key});
+
   @override
   _OptionScreenBState createState() => _OptionScreenBState();
 }
@@ -273,7 +281,7 @@ class _OptionScreenBState extends State<OptionScreenB> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Options for Block B'),
+        title: const Text('Options for Block B'),
       ),
       body: Container(
         color: Colors.yellow,
@@ -294,9 +302,9 @@ class _OptionScreenBState extends State<OptionScreenB> {
                     selectedMess = value;
                   });
                 },
-                hint: Text('Select Mess Name'),
+                hint: const Text('Select Mess Name'),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               DropdownButton<String>(
                 value: selectedMessType,
                 items: messTypes.map((type) {
@@ -310,15 +318,15 @@ class _OptionScreenBState extends State<OptionScreenB> {
                     selectedMessType = value;
                   });
                 },
-                hint: Text('Select Mess Type'),
+                hint: const Text('Select Mess Type'),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   print('Selected Mess Name: $selectedMess');
                   print('Selected Mess Type: $selectedMessType');
                 },
-                child: Text('Submit'),
+                child: const Text('Submit'),
               ),
             ],
           ),
@@ -329,6 +337,8 @@ class _OptionScreenBState extends State<OptionScreenB> {
 }
 
 class OptionScreenC extends StatefulWidget {
+  const OptionScreenC({super.key});
+
   @override
   _OptionScreenCState createState() => _OptionScreenCState();
 }
@@ -344,7 +354,7 @@ class _OptionScreenCState extends State<OptionScreenC> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Options for Block C'),
+        title: const Text('Options for Block C'),
       ),
       body: Container(
         color: Colors.yellow,
@@ -365,9 +375,9 @@ class _OptionScreenCState extends State<OptionScreenC> {
                     selectedMess = value;
                   });
                 },
-                hint: Text('Select Mess Name'),
+                hint: const Text('Select Mess Name'),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               DropdownButton<String>(
                 value: selectedMessType,
                 items: messTypes.map((type) {
@@ -381,15 +391,15 @@ class _OptionScreenCState extends State<OptionScreenC> {
                     selectedMessType = value;
                   });
                 },
-                hint: Text('Select Mess Type'),
+                hint: const Text('Select Mess Type'),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   print('Selected Mess Name: $selectedMess');
                   print('Selected Mess Type: $selectedMessType');
                 },
-                child: Text('Submit'),
+                child: const Text('Submit'),
               ),
             ],
           ),
@@ -400,6 +410,8 @@ class _OptionScreenCState extends State<OptionScreenC> {
 }
 
 class OptionScreenD extends StatefulWidget {
+  const OptionScreenD({super.key});
+
   @override
   _OptionScreenDState createState() => _OptionScreenDState();
 }
@@ -415,7 +427,7 @@ class _OptionScreenDState extends State<OptionScreenD> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Options for Block D'),
+        title: const Text('Options for Block D'),
       ),
       body: Container(
         color: Colors.yellow,
@@ -436,9 +448,9 @@ class _OptionScreenDState extends State<OptionScreenD> {
                     selectedMess = value;
                   });
                 },
-                hint: Text('Select Mess Name'),
+                hint: const Text('Select Mess Name'),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               DropdownButton<String>(
                 value: selectedMessType,
                 items: messTypes.map((type) {
@@ -452,15 +464,15 @@ class _OptionScreenDState extends State<OptionScreenD> {
                     selectedMessType = value;
                   });
                 },
-                hint: Text('Select Mess Type'),
+                hint: const Text('Select Mess Type'),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   print('Selected Mess Name: $selectedMess');
                   print('Selected Mess Type: $selectedMessType');
                 },
-                child: Text('Submit'),
+                child: const Text('Submit'),
               ),
             ],
           ),
